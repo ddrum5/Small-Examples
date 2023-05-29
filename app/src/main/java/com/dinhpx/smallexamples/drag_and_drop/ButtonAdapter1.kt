@@ -1,14 +1,17 @@
-package com.dinhpx.smallexamples.home
+package com.dinhpx.smallexamples.drag_and_drop
 
+import android.content.ClipData
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import com.dinhpx.base.base.BaseRclvAdapter
 import com.dinhpx.base.base.BaseViewHolder
 import com.dinhpx.smallexamples.databinding.ItemButtonHomeBinding
+import com.dinhpx.smallexamples.home.FunctionEntity
 
-class ButtonAdapter : BaseRclvAdapter() {
+class ButtonAdapter1 : BaseRclvAdapter() {
 
-    var onClickItem: ((FunctionEntity) -> Unit)? = null
+
 
     override fun createVH(layoutInflater: LayoutInflater, parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
         return ButtonVH(
@@ -20,12 +23,16 @@ class ButtonAdapter : BaseRclvAdapter() {
         BaseViewHolder<FunctionEntity>(binding) {
 
         init {
-            binding.btnHomeItm.setOnClickListener {
-                if (bindingAdapterPosition > -1) {
-                    onClickItem?.invoke(
-                        getListData()[bindingAdapterPosition] as FunctionEntity
-                    )
+
+            binding.root.setOnLongClickListener { view ->
+                val data = ClipData.newPlainText("", "word")
+                val shadowBuilder = View.DragShadowBuilder(view)
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                    view.startDragAndDrop(data, shadowBuilder, view, 0)
+                } else {
+                    view.startDrag(data, shadowBuilder, view, 0)
                 }
+                true
             }
         }
 

@@ -1,5 +1,6 @@
 package com.dinhpx.base.base
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dinhpx.base.base.extensions.removeRange
@@ -8,10 +9,10 @@ abstract class BaseRclvAdapter : RecyclerView.Adapter<BaseViewHolder<Any>>() {
 
     protected val mDataSet = mutableListOf<Any>()
 
-    abstract fun createVH(parent: ViewGroup, viewType: Int): BaseViewHolder<*>
+    abstract fun createVH(layoutInflater: LayoutInflater, parent: ViewGroup, viewType: Int): BaseViewHolder<*>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<Any> {
-        return createVH(parent, viewType) as BaseViewHolder<Any>
+        return createVH(LayoutInflater.from(parent.context), parent, viewType) as BaseViewHolder<Any>
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder<Any>, position: Int) {

@@ -13,12 +13,10 @@ abstract class LoadMoreAdapter : BaseRclvAdapter() {
     }
 
 
-    abstract fun createCustomVH(parent: ViewGroup, viewType: Int): BaseViewHolder<*>
+    abstract fun createCustomVH(layoutInflater: LayoutInflater, parent: ViewGroup, viewType: Int): BaseViewHolder<*>
 
-    open fun setCustomLoading(parent: ViewGroup, viewType: Int): ViewBinding {
-        return ItemLoadingBinding.inflate(
-            LayoutInflater.from(parent.context), parent, false
-        )
+    open fun setCustomLoading(layoutInflater: LayoutInflater, parent: ViewGroup, viewType: Int): ViewBinding {
+        return ItemLoadingBinding.inflate(layoutInflater, parent, false)
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -28,11 +26,11 @@ abstract class LoadMoreAdapter : BaseRclvAdapter() {
         }
     }
 
-    override fun createVH(parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
+    override fun createVH(layoutInflater: LayoutInflater, parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
         return if (viewType == LOADING_TYPE) {
-            LoadingVH(setCustomLoading(parent, viewType))
+            LoadingVH(setCustomLoading(layoutInflater, parent, viewType))
         } else {
-            createCustomVH(parent, viewType)
+            createCustomVH(layoutInflater, parent, viewType)
         }
     }
 
