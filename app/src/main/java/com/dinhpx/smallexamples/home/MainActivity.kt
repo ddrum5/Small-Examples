@@ -18,16 +18,14 @@ class MainActivity : BaseActivity() {
 
     override fun initView() {
         binding.rvButton.adapter = adapter
-        adapter.resetData(viewModel.listFunction)
+        adapter.resetData(FunctionFactory.getListFunction())
     }
 
-    override fun initObserve() {
-
-    }
+    override fun initObserve() {}
 
     override fun initListener() {
         adapter.onClickItem = {
-            openFunction(viewModel.getFunction(it.type))
+            openFunction(FunctionFactory.getFragmentFunction(it.type))
         }
     }
 
