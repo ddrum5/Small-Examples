@@ -4,6 +4,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import com.dinhpx.base.base.BaseActivity
+import com.dinhpx.smallexamples.FunctionFactory
 import com.dinhpx.smallexamples.R
 import com.dinhpx.smallexamples.databinding.ActivityMainBinding
 
@@ -18,7 +19,7 @@ class MainActivity : BaseActivity() {
 
     override fun initView() {
         binding.rvButton.adapter = adapter
-        adapter.resetData(viewModel.listFunction)
+        adapter.resetData(FunctionFactory.getListFunction())
     }
 
     override fun initObserve() {
@@ -27,7 +28,7 @@ class MainActivity : BaseActivity() {
 
     override fun initListener() {
         adapter.onClickItem = {
-            openFunction(viewModel.getFunction(it.type))
+            openFunction(FunctionFactory.getFunctionFragment(it))
         }
     }
 

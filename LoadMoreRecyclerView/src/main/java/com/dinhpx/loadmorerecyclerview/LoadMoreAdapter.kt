@@ -51,7 +51,7 @@ abstract class LoadMoreAdapter : BaseRclvAdapter() {
 
     private fun hideLoading() {
         if (isLoading()) {
-            removeAt(mDataSet.lastIndex)
+            removeItemAt(mDataSet.lastIndex)
         }
     }
 

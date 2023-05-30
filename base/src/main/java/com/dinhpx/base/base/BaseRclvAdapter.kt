@@ -16,7 +16,7 @@ abstract class BaseRclvAdapter : RecyclerView.Adapter<BaseViewHolder<Any>>() {
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder<Any>, position: Int) {
-        holder.onBind(mDataSet[position])
+        holder.onBind(getDataAtPosition(position))
     }
 
     override fun onBindViewHolder(
@@ -25,11 +25,15 @@ abstract class BaseRclvAdapter : RecyclerView.Adapter<BaseViewHolder<Any>>() {
         payloads: MutableList<Any>
     ) {
         super.onBindViewHolder(holder, position, payloads)
-        holder.onBindPayLoad(mDataSet[position], payloads)
+        holder.onBindPayLoad(getDataAtPosition(position), payloads)
     }
 
     override fun getItemCount(): Int {
         return mDataSet.size
+    }
+
+    open fun getDataAtPosition(position: Int): Any {
+        return mDataSet[position]
     }
 
     fun getListData(): List<Any> {
@@ -62,17 +66,19 @@ abstract class BaseRclvAdapter : RecyclerView.Adapter<BaseViewHolder<Any>>() {
         notifyItemRangeInserted(position, listData.size)
     }
 
-    protected fun removeData(data: Any) {
-        val position = mDataSet.indexOf(data)
-        if (position > -1) {
-            removeAt(position)
-        }
-    }
-
-    protected fun removeAt(position: Int) {
+    protected fun removeItemAt(position: Int) {
         mDataSet.removeAt(position)
         notifyItemRemoved(position)
     }
+
+    protected fun removeData(data: Any) {
+        val position = mDataSet.indexOf(data)
+        if (position > -1) {
+            removeItemAt(position)
+        }
+    }
+
+
 
     protected fun removeRange(start: Int, itemCount: Int) {
         mDataSet.removeRange(start, start + itemCount - 1)

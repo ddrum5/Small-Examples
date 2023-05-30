@@ -6,15 +6,22 @@ import com.dinhpx.base.base.BaseRclvAdapter
 import com.dinhpx.base.base.BaseViewHolder
 import com.dinhpx.smallexamples.databinding.ItemButtonHomeBinding
 
-class ButtonAdapter : BaseRclvAdapter() {
+class ButtonAdapter() : BaseRclvAdapter() {
 
     var onClickItem: ((FunctionEntity) -> Unit)? = null
+    var onLongClickItem: ((FunctionEntity) -> Unit)? = null
 
-    override fun createVH(layoutInflater: LayoutInflater, parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
+
+    override fun createVH(
+        layoutInflater: LayoutInflater,
+        parent: ViewGroup,
+        viewType: Int
+    ): BaseViewHolder<*> {
         return ButtonVH(
             ItemButtonHomeBinding.inflate(layoutInflater, parent, false)
         )
     }
+
 
     inner class ButtonVH(private val binding: ItemButtonHomeBinding) :
         BaseViewHolder<FunctionEntity>(binding) {
@@ -26,6 +33,15 @@ class ButtonAdapter : BaseRclvAdapter() {
                         getListData()[bindingAdapterPosition] as FunctionEntity
                     )
                 }
+            }
+            binding.btnHomeItm.setOnLongClickListener {
+                if (bindingAdapterPosition > -1) {
+                    onLongClickItem?.invoke(
+                        getListData()[bindingAdapterPosition] as FunctionEntity
+                    )
+                    removeItemAt(bindingAdapterPosition)
+                }
+                true
             }
         }
 
