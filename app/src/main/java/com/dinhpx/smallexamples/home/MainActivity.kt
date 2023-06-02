@@ -4,6 +4,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import com.dinhpx.base.base.BaseActivity
+import com.dinhpx.smallexamples.FunctionFactory
 import com.dinhpx.smallexamples.R
 import com.dinhpx.smallexamples.databinding.ActivityMainBinding
 
@@ -21,11 +22,13 @@ class MainActivity : BaseActivity() {
         adapter.resetData(FunctionFactory.getListFunction())
     }
 
-    override fun initObserve() {}
+    override fun initObserve() {
+
+    }
 
     override fun initListener() {
         adapter.onClickItem = {
-            openFunction(FunctionFactory.getFragmentFunction(it.type))
+            openFunction(FunctionFactory.getFunctionFragment(it))
         }
     }
 

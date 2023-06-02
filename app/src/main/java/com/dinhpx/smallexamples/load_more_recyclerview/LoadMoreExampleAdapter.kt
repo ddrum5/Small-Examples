@@ -2,6 +2,7 @@ package com.dinhpx.smallexamples.load_more_recyclerview
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.viewbinding.ViewBinding
 import com.dinhpx.base.base.BaseViewHolder
 import com.dinhpx.loadmorerecyclerview.LoadMoreAdapter
@@ -25,25 +26,19 @@ class LoadMoreExampleAdapter : LoadMoreAdapter() {
         }
     }
 
-    override fun createCustomVH(parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
+    override fun createCustomVH(layoutInflater: LayoutInflater, parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
         return when (viewType) {
             1 -> {
-                SimpleVH(
-                    ItemDataBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-                )
+                SimpleVH(ItemDataBinding.inflate(layoutInflater, parent, false))
             }
             else -> {
-                SimpleVH2(
-                    ItemDataBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-                )
+                SimpleVH2(ItemDataBinding.inflate(layoutInflater, parent, false))
             }
         }
     }
 
-    override fun setCustomLoading(parent: ViewGroup, viewType: Int): ViewBinding {
-        return ItemLoadingCustomBinding.inflate(
-            LayoutInflater.from(parent.context), parent, false
-        )
+    override fun setCustomLoading(layoutInflater: LayoutInflater, parent: ViewGroup, viewType: Int): ViewBinding {
+        return ItemLoadingCustomBinding.inflate(layoutInflater, parent, false)
     }
 
     class SimpleVH(private val binding: ItemDataBinding) : BaseViewHolder<ItemData>(binding) {
