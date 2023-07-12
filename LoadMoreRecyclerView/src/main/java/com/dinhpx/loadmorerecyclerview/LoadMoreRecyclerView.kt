@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.facebook.shimmer.ShimmerFrameLayout
 
 class LoadMoreRecyclerView : RecyclerView {
 
@@ -23,6 +24,8 @@ class LoadMoreRecyclerView : RecyclerView {
     ) {
         init()
     }
+
+    private lateinit var simmer: ShimmerFrameLayout
 
 
     private lateinit var callBackLoadMore: CallBackLoadMore
