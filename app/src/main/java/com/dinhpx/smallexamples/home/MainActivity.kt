@@ -1,5 +1,9 @@
 package com.dinhpx.smallexamples.home
 
+import android.app.ActivityManager
+import android.content.Intent
+import android.util.Log
+import android.view.KeyEvent
 import android.view.View
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
@@ -9,7 +13,7 @@ import com.dinhpx.smallexamples.R
 import com.dinhpx.smallexamples.databinding.ActivityMainBinding
 
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity(), KeyEvent.Callback {
 
     override val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
@@ -18,6 +22,7 @@ class MainActivity : BaseActivity() {
     private val adapter by lazy { ButtonAdapter() }
 
     override fun initView() {
+        startActivity(Intent(this, MainActivity1::class.java))
         binding.rvButton.adapter = adapter
         adapter.resetData(FunctionFactory.getListFunction())
     }
@@ -55,5 +60,4 @@ class MainActivity : BaseActivity() {
             binding.rvButton.visibility = View.VISIBLE
         }
     }
-
 }

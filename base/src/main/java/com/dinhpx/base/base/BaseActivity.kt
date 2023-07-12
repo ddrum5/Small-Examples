@@ -10,6 +10,8 @@ import androidx.viewbinding.ViewBinding
 
 abstract class BaseActivity : AppCompatActivity() {
 
+    open val TAG = "DINHPXTEST " +  this.javaClass.simpleName
+
     abstract val binding: ViewBinding
 
     abstract val viewModel: BaseViewModel

@@ -10,6 +10,8 @@ import androidx.viewbinding.ViewBinding
 
 abstract class BaseFragment : Fragment() {
 
+    val TAG = "DINHPXTEST " +  this.javaClass.simpleName
+
     abstract val binding: ViewBinding
 
     abstract val viewModel: BaseViewModel
@@ -27,16 +29,6 @@ abstract class BaseFragment : Fragment() {
         initView()
         initObserve()
         initListener()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        Log.d("DINHPXTEXT", "onDestroyView")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d("DINHPXTEXT", "onDestroy")
     }
 
     abstract fun initView()

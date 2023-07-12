@@ -7,13 +7,15 @@
         <entry key="..\:/Project Sample/SmallExamples/LoadMoreRecyclerView/src/main/res/layout/daa.xml" value="0.3546875" />
         <entry key="..\:/Project Sample/SmallExamples/LoadMoreRecyclerView/src/main/res/layout/item_data.xml" value="0.3546875" />
         <entry key="..\:/Project Sample/SmallExamples/app/src/main/res/layout/activity_main.xml" value="0.3546875" />
+        <entry key="..\:/Project Sample/SmallExamples/app/src/main/res/layout/activity_main_test.xml" value="0.3546875" />
+        <entry key="..\:/Project Sample/SmallExamples/app/src/main/res/layout/fragment_grid.xml" value="0.3546875" />
         <entry key="..\:/Project Sample/SmallExamples/app/src/main/res/layout/fragment_loadmore_recyclerview.xml" value="0.3546875" />
         <entry key="..\:/Project Sample/SmallExamples/app/src/main/res/layout/item_button_home.xml" value="0.3546875" />
         <entry key="..\:/Project Sample/SmallExamples/app/src/main/res/layout/item_loading_custom.xml" value="0.3546875" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
